@@ -20,6 +20,12 @@ public class Player {
     @JoinColumn
     private Game game;
 
+    // here we connect one player entry back to the user who joined the game
+    @ManyToOne
+    // here we keep the foreign key column for the user relation
+    @JoinColumn
+    private User user;
+
     // ...
 
     public long getUid() {
@@ -44,6 +50,16 @@ public class Player {
 
     public void setGame(Game game) {
         this.game = game;
+    }
+
+    // here we give access to the user that belongs to this player entry
+    public User getUser() {
+        return user;
+    }
+
+    // here we store which user this player entry belongs to
+    public void setUser(User user) {
+        this.user = user;
     }
 
 }
