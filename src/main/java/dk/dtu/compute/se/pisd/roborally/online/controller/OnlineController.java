@@ -54,6 +54,7 @@ public class OnlineController {
             //      as onLineUser in this controller! (NOT the once created
             //      in the code below!)
             try {
+                // here we call the backend search endpoint and ask for users with this name
                 List<User> users = restClient.get()
                         .uri(uriBuilder -> uriBuilder
                                 .path("user/search")
@@ -63,14 +64,17 @@ public class OnlineController {
                         .body(new ParameterizedTypeReference<>() {});
 
                 if (users != null && !users.isEmpty()) {
+                    // here we take the first matching user and log in with the real backend uid
                     setOnlineUser(users.get(0));
                 } else {
+                    // here we tell the user that the typed name does not exist in the backend
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setTitle("Sign in failed");
                     alert.setHeaderText("No user with the name '" + name + "' exists in the backend.");
                     alert.showAndWait();
                 }
             } catch (Exception e) {
+                // here we show that the backend could not be reached at all
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Backend not available");
                 alert.setHeaderText("Could not contact the backend while signing in.");
@@ -136,16 +140,20 @@ public class OnlineController {
             // TODO Assignment 7b: Obtain the list of all games from the backend!
             // TODO Assignment 7c/7e: And at some later point, this should only
             //      return the games open for registration (not started yet).
+            // here we ask the backend for the full list of games
             List<Game> games = restClient.get()
                     .uri("game")
                     .retrieve()
                     .body(new ParameterizedTypeReference<>() {});
 
             if (games == null) {
+                // here we fall back to an empty list if the backend sends nothing back
                 games = new ArrayList<>();
             }
+            // here we store the games in the online state so the game view can show them
             onlineState.setOpenGames(games);
         } catch (Exception e) {
+            // here we clear the games when loading failed so the UI knows something went wrong
             onlineState.setOpenGames(null);
         }
     }
@@ -200,6 +208,7 @@ public class OnlineController {
                 // TODO Assignment 7c: Extend the game creation so that the currently signed in user
                 //      is the owener of the game, which should also be registered as the first
                 //      player of the game
+                // here we send the new game to the backend with a POST request
                 restClient.post()
                         .uri("game")
                         .body(game)
