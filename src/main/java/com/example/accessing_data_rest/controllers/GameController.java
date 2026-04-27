@@ -19,15 +19,19 @@ public class GameController {
     //      a list of all games from the games repository  (via the service
     //      getGames) and returns this list (in JSON representation).
     //      See class UserController for inspiration and class GameService
+    // here we open a GET endpoint so the client can ask for all games
     @GetMapping(produces="application/json")
     public List<Game> getGames() {
+        // here we forward the work to the service and return the JSON result
         return gameService.getGames();
     }
 
     // TODO Assignment 7b: Create a post method in this controller for creating a new game
     //      this method should call the corresponding service for creating a game
+    // here we open a POST endpoint so the client can send a new game to the backend
     @PostMapping(consumes="application/json", produces="application/json")
     public Game createGame(@RequestBody Game game) {
+        // here we pass the posted game to the service and return the saved version
         return gameService.createGame(game);
     }
 
