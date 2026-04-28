@@ -1,0 +1,12 @@
+Assignment 7b implemented files
+
+Backend project:
+- /Users/talha/DTU/2 semester/Advanced programming 02324/21. Modul/Assignments/signup4games-backend/src/main/java/com/example/accessing_data_rest/services/UserService.java
+- /Users/talha/DTU/2 semester/Advanced programming 02324/21. Modul/Assignments/signup4games-backend/src/main/java/com/example/accessing_data_rest/services/GameService.java
+- /Users/talha/DTU/2 semester/Advanced programming 02324/21. Modul/Assignments/signup4games-backend/src/main/java/com/example/accessing_data_rest/controllers/GameController.java
+
+Client project:
+- /Users/talha/DTU/2 semester/Advanced programming 02324/21. Modul/Assignments/roborally/src/main/java/dk/dtu/compute/se/pisd/roborally/online/controller/OnlineController.java
+
+Comment update note:
+- The implementation comments were added only around the code written for Assignment 7b.
