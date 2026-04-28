@@ -17,7 +17,7 @@ public class UserService {
         // TODO Assignment 7b: obtain a list of users with the given name
         //      from the userRepository and return the result (instead
         //      the empty list below).
-        // here we ask the repository for all users with the typed name
+        // Implementation: now the repository looks up all users with the typed name
         return userRepository.findByName(name);
     }
 

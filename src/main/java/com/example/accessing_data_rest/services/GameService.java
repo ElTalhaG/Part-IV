@@ -17,17 +17,17 @@ public class GameService {
     public List<Game> getGames() {
         // TODO Assignment 7b: Implement the method for obtaining all games from the
         //      GameRepository (using finaAll) and returning it as a list
-        // here we make an empty list so we can collect all games from the repository
+        // Implementation: first we make an empty list so the iterator can be turned into a real list
         List<Game> games = new ArrayList<>();
-        // here we loop through everything from findAll and put each game into the list
+        // Implementation: after that each game from findAll is added into the list one by one
         gameRepository.findAll().forEach(games::add);
-        // here we send the finished list back to the controller
+        // Implementation: at the end the finished list goes back to the controller
         return games;
     }
 
     // DONE Assignment 7b: create a game in the repository and return the result
     public Game createGame(Game game) {
-        // here we save the new game in the database and get the saved version back
+        // Implementation: this saves the new game in the database and returns the saved copy
         return gameRepository.save(game);
     }
 
