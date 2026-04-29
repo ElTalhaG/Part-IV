@@ -53,7 +53,20 @@ public class GameController {
         //   - the counter of moves in the game should be increased by one
         //     if and when the player is moved (the counter and the status line
         //     message needs to be implemented at another place)
+        // Implementation: first we read the current player from the board so the move works on the active player
+        Player currentPlayer = board.getCurrentPlayer();
+        // Implementation: the move only happens when there is an active player and the target space is empty
+        if (currentPlayer != null && space.getPlayer() == null) {
+            // Implementation: this moves the player from the old space to the chosen target space
+            currentPlayer.setSpace(space);
 
+            // Implementation: after moving, the next player in the board list becomes the current player
+            int currentIndex = board.getPlayerNumber(currentPlayer);
+            if (currentIndex >= 0) {
+                int nextIndex = (currentIndex + 1) % board.getPlayersNumber();
+                board.setCurrentPlayer(board.getPlayer(nextIndex));
+            }
+        }
     }
 
     // XXX A6c
